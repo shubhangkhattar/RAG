@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "afb508c0ff416547ab2c411f0c4822b19d20c9305446f89c572163a918e8a250": {
+      "displayName": "RagCache-dev Template",
+      "source": {
+        "path": "RagCache-dev.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "774200944025-us-east-1-86413788": {
+          "bucketName": "cdk-hnb659fds-assets-774200944025-us-east-1",
+          "objectKey": "afb508c0ff416547ab2c411f0c4822b19d20c9305446f89c572163a918e8a250.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::774200944025:role/cdk-hnb659fds-file-publishing-role-774200944025-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

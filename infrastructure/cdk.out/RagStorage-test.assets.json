@@ -1,0 +1,36 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6": {
+      "displayName": "RagStorage-test/Custom::S3AutoDeleteObjectsCustomResourceProvider Code",
+      "source": {
+        "path": "asset.faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "774200944025-us-east-1-7394eb49": {
+          "bucketName": "cdk-hnb659fds-assets-774200944025-us-east-1",
+          "objectKey": "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6.zip",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::774200944025:role/cdk-hnb659fds-file-publishing-role-774200944025-us-east-1"
+        }
+      }
+    },
+    "d64a3c4fff5cd7c6cc824c4a2ca9307f55a41b06a39fe93340acc92d8fe436ec": {
+      "displayName": "RagStorage-test Template",
+      "source": {
+        "path": "RagStorage-test.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "774200944025-us-east-1-b1bb268e": {
+          "bucketName": "cdk-hnb659fds-assets-774200944025-us-east-1",
+          "objectKey": "d64a3c4fff5cd7c6cc824c4a2ca9307f55a41b06a39fe93340acc92d8fe436ec.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::774200944025:role/cdk-hnb659fds-file-publishing-role-774200944025-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

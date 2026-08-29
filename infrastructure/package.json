@@ -1,0 +1,25 @@
+{
+  "name": "rag-infrastructure",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "diff": "cdk diff",
+    "deploy:dev": "cdk deploy --all --context stage=dev",
+    "deploy:prod": "cdk deploy --all --context stage=prod",
+    "destroy:dev": "cdk destroy --all --context stage=dev"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.19",
+    "aws-cdk": "2.x",
+    "typescript": "~5.7"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.x",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  }
+}

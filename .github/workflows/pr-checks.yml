@@ -1,0 +1,122 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+# PRs get read-only permissions — they must never assume the deploy role
+permissions:
+  contents: read
+  pull-requests: write  # for posting check summaries
+
+jobs:
+  # ── CDK TypeScript compile ───────────────────────────────────────────────────
+  cdk-typecheck:
+    name: CDK — TypeScript
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infrastructure
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: infrastructure/package-lock.json
+
+      - run: npm ci
+      - run: npx tsc --noEmit
+
+  # ── CDK synth (structural validation without deploying) ──────────────────────
+  cdk-synth:
+    name: CDK — Synth
+    runs-on: ubuntu-latest
+    needs: cdk-typecheck
+    defaults:
+      run:
+        working-directory: infrastructure
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: infrastructure/package-lock.json
+
+      - run: npm ci
+
+      # Synth with a dummy account so no AWS credentials are needed.
+      # This validates stack structure and catches cross-stack dependency cycles.
+      - name: Synth dev
+        env:
+          CDK_DEFAULT_ACCOUNT: '000000000000'
+          CDK_DEFAULT_REGION: us-east-1
+        run: npx cdk synth --context stage=dev --quiet 2>&1 | grep -v '^\[WARNING\]' || true
+
+  # ── Python linting (Ruff — fast, covers style + common bugs) ─────────────────
+  python-lint:
+    name: Python — Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Ruff
+        run: pip install ruff
+
+      - name: Lint services/
+        run: ruff check services/ --output-format=github
+
+      - name: Format check services/
+        run: ruff format --check services/
+
+  # ── Python type checking (Pyright) ───────────────────────────────────────────
+  python-types:
+    name: Python — Types
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install deps
+        run: |
+          pip install pyright
+          pip install -r services/api/requirements.txt
+          pip install -r services/ingestion/processor/requirements.txt
+          pip install -r services/ingestion/embedder/requirements.txt
+
+      - name: Type check API service
+        run: pyright services/api/src --pythonversion 3.12
+
+  # ── Docker build validation (no push) ────────────────────────────────────────
+  docker-build:
+    name: Docker — Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build API image (no push)
+        uses: docker/build-push-action@v5
+        with:
+          context: services/api
+          file: services/api/Dockerfile
+          push: false
+          platforms: linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

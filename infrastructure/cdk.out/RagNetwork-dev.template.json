@@ -1,0 +1,1509 @@
+{
+ "Resources": {
+  "RagVpcF255D156": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.10.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/Resource"
+   }
+  },
+  "RagVpcpublicSubnet1SubnetFCBD8E3C": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "10.10.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/publicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet1/Subnet"
+   }
+  },
+  "RagVpcpublicSubnet1RouteTable8B413332": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/publicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet1/RouteTable"
+   }
+  },
+  "RagVpcpublicSubnet1RouteTableAssociation225AEC56": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "RagVpcpublicSubnet1RouteTable8B413332"
+    },
+    "SubnetId": {
+     "Ref": "RagVpcpublicSubnet1SubnetFCBD8E3C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet1/RouteTableAssociation"
+   }
+  },
+  "RagVpcpublicSubnet1DefaultRoute4729675D": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "RagVpcIGW99FB4ADC"
+    },
+    "RouteTableId": {
+     "Ref": "RagVpcpublicSubnet1RouteTable8B413332"
+    }
+   },
+   "DependsOn": [
+    "RagVpcVPCGWC32343EC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet1/DefaultRoute"
+   }
+  },
+  "RagVpcpublicSubnet1EIPC60579A0": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/publicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet1/EIP"
+   }
+  },
+  "RagVpcpublicSubnet1NATGateway7982108B": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "RagVpcpublicSubnet1EIPC60579A0",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "RagVpcpublicSubnet1SubnetFCBD8E3C"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/publicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "RagVpcpublicSubnet1DefaultRoute4729675D",
+    "RagVpcpublicSubnet1RouteTableAssociation225AEC56"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet1/NATGateway"
+   }
+  },
+  "RagVpcpublicSubnet2Subnet0657F9AA": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "10.10.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/publicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet2/Subnet"
+   }
+  },
+  "RagVpcpublicSubnet2RouteTableB0B7202A": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/publicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet2/RouteTable"
+   }
+  },
+  "RagVpcpublicSubnet2RouteTableAssociationF26482F2": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "RagVpcpublicSubnet2RouteTableB0B7202A"
+    },
+    "SubnetId": {
+     "Ref": "RagVpcpublicSubnet2Subnet0657F9AA"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet2/RouteTableAssociation"
+   }
+  },
+  "RagVpcpublicSubnet2DefaultRoute8F3D3507": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "RagVpcIGW99FB4ADC"
+    },
+    "RouteTableId": {
+     "Ref": "RagVpcpublicSubnet2RouteTableB0B7202A"
+    }
+   },
+   "DependsOn": [
+    "RagVpcVPCGWC32343EC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/publicSubnet2/DefaultRoute"
+   }
+  },
+  "RagVpcprivateSubnet1Subnet01559DA9": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "10.10.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/privateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet1/Subnet"
+   }
+  },
+  "RagVpcprivateSubnet1RouteTable18E1424D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/privateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet1/RouteTable"
+   }
+  },
+  "RagVpcprivateSubnet1RouteTableAssociation2438DC79": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "RagVpcprivateSubnet1RouteTable18E1424D"
+    },
+    "SubnetId": {
+     "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet1/RouteTableAssociation"
+   }
+  },
+  "RagVpcprivateSubnet1DefaultRoute2D711B5D": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "RagVpcpublicSubnet1NATGateway7982108B"
+    },
+    "RouteTableId": {
+     "Ref": "RagVpcprivateSubnet1RouteTable18E1424D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet1/DefaultRoute"
+   }
+  },
+  "RagVpcprivateSubnet2Subnet34F37733": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "10.10.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/privateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet2/Subnet"
+   }
+  },
+  "RagVpcprivateSubnet2RouteTable65DEDBBD": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/privateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet2/RouteTable"
+   }
+  },
+  "RagVpcprivateSubnet2RouteTableAssociationD56DBB7F": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "RagVpcprivateSubnet2RouteTable65DEDBBD"
+    },
+    "SubnetId": {
+     "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet2/RouteTableAssociation"
+   }
+  },
+  "RagVpcprivateSubnet2DefaultRoute335CD199": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "RagVpcpublicSubnet1NATGateway7982108B"
+    },
+    "RouteTableId": {
+     "Ref": "RagVpcprivateSubnet2RouteTable65DEDBBD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/privateSubnet2/DefaultRoute"
+   }
+  },
+  "RagVpcisolatedSubnet1Subnet61457814": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "10.10.4.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/isolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/isolatedSubnet1/Subnet"
+   }
+  },
+  "RagVpcisolatedSubnet1RouteTableFAAA4EA9": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/isolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/isolatedSubnet1/RouteTable"
+   }
+  },
+  "RagVpcisolatedSubnet1RouteTableAssociation030BEC46": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "RagVpcisolatedSubnet1RouteTableFAAA4EA9"
+    },
+    "SubnetId": {
+     "Ref": "RagVpcisolatedSubnet1Subnet61457814"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/isolatedSubnet1/RouteTableAssociation"
+   }
+  },
+  "RagVpcisolatedSubnet2Subnet78EB2939": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "10.10.5.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/isolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/isolatedSubnet2/Subnet"
+   }
+  },
+  "RagVpcisolatedSubnet2RouteTable6170D54A": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/RagVpc/isolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/isolatedSubnet2/RouteTable"
+   }
+  },
+  "RagVpcisolatedSubnet2RouteTableAssociation305AC3B0": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "RagVpcisolatedSubnet2RouteTable6170D54A"
+    },
+    "SubnetId": {
+     "Ref": "RagVpcisolatedSubnet2Subnet78EB2939"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/isolatedSubnet2/RouteTableAssociation"
+   }
+  },
+  "RagVpcIGW99FB4ADC": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/IGW"
+   }
+  },
+  "RagVpcVPCGWC32343EC": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "RagVpcIGW99FB4ADC"
+    },
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/VPCGW"
+   }
+  },
+  "RagVpcS3Endpoint4604A5D7": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "RouteTableIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1RouteTable18E1424D"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2RouteTable65DEDBBD"
+     },
+     {
+      "Ref": "RagVpcpublicSubnet1RouteTable8B413332"
+     },
+     {
+      "Ref": "RagVpcpublicSubnet2RouteTableB0B7202A"
+     },
+     {
+      "Ref": "RagVpcisolatedSubnet1RouteTableFAAA4EA9"
+     },
+     {
+      "Ref": "RagVpcisolatedSubnet2RouteTable6170D54A"
+     }
+    ],
+    "ServiceName": {
+     "Fn::Join": [
+      "",
+      [
+       "com.amazonaws.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".s3"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Gateway",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/S3Endpoint/Resource"
+   }
+  },
+  "RagVpcDynamoDBEndpointCCAF9C84": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "RouteTableIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1RouteTable18E1424D"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2RouteTable65DEDBBD"
+     },
+     {
+      "Ref": "RagVpcpublicSubnet1RouteTable8B413332"
+     },
+     {
+      "Ref": "RagVpcpublicSubnet2RouteTableB0B7202A"
+     },
+     {
+      "Ref": "RagVpcisolatedSubnet1RouteTableFAAA4EA9"
+     },
+     {
+      "Ref": "RagVpcisolatedSubnet2RouteTable6170D54A"
+     }
+    ],
+    "ServiceName": {
+     "Fn::Join": [
+      "",
+      [
+       "com.amazonaws.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".dynamodb"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Gateway",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/DynamoDBEndpoint/Resource"
+   }
+  },
+  "RagVpcBedrockRuntimeEndpointSecurityGroup13258BC1": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/BedrockRuntimeEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/BedrockRuntimeEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcBedrockRuntimeEndpoint0AF0E01A": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcBedrockRuntimeEndpointSecurityGroup13258BC1",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.bedrock-runtime",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/BedrockRuntimeEndpoint/Resource"
+   }
+  },
+  "RagVpcTextractEndpointSecurityGroupD7F9BE50": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/TextractEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/TextractEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcTextractEndpoint16E68107": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcTextractEndpointSecurityGroupD7F9BE50",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.textract",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/TextractEndpoint/Resource"
+   }
+  },
+  "RagVpcEcrApiEndpointSecurityGroup42976B86": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/EcrApiEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/EcrApiEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcEcrApiEndpoint4DCB4E0A": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcEcrApiEndpointSecurityGroup42976B86",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.ecr.api",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/EcrApiEndpoint/Resource"
+   }
+  },
+  "RagVpcEcrDkrEndpointSecurityGroup5E196BA1": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/EcrDkrEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/EcrDkrEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcEcrDkrEndpoint86FED821": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcEcrDkrEndpointSecurityGroup5E196BA1",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.ecr.dkr",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/EcrDkrEndpoint/Resource"
+   }
+  },
+  "RagVpcCloudWatchLogsEndpointSecurityGroup0A103B7C": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/CloudWatchLogsEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/CloudWatchLogsEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcCloudWatchLogsEndpoint035CE9BE": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcCloudWatchLogsEndpointSecurityGroup0A103B7C",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.logs",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/CloudWatchLogsEndpoint/Resource"
+   }
+  },
+  "RagVpcStepFunctionsEndpointSecurityGroupEF65297B": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/StepFunctionsEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/StepFunctionsEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcStepFunctionsEndpoint7F9D72BC": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcStepFunctionsEndpointSecurityGroupEF65297B",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.states",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/StepFunctionsEndpoint/Resource"
+   }
+  },
+  "RagVpcSsmEndpointSecurityGroup08DE6473": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/SsmEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/SsmEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcSsmEndpoint1CE9347B": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcSsmEndpointSecurityGroup08DE6473",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.ssm",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/SsmEndpoint/Resource"
+   }
+  },
+  "RagVpcSecretsManagerEndpointSecurityGroup214C1AC7": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "RagNetwork-dev/RagVpc/SecretsManagerEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "RagVpcF255D156",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "RagVpcF255D156",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/SecretsManagerEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "RagVpcSecretsManagerEndpoint06CAFF1D": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "RagVpcSecretsManagerEndpointSecurityGroup214C1AC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.secretsmanager",
+    "SubnetIds": [
+     {
+      "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+     },
+     {
+      "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rag-vpc-dev"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "RagVpcF255D156"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/RagVpc/SecretsManagerEndpoint/Resource"
+   }
+  },
+  "VpcFlowLogGroup86559C69": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": "/rag/vpc-flow-logs/dev",
+    "RetentionInDays": 30
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/VpcFlowLogGroup/Resource"
+   }
+  },
+  "VpcFlowLogIAMRoleB4DCB624": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "vpc-flow-logs.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/VpcFlowLog"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/VpcFlowLog/IAMRole/Resource"
+   }
+  },
+  "VpcFlowLogIAMRoleDefaultPolicy7533133B": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:DescribeLogStreams",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "VpcFlowLogGroup86559C69",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "VpcFlowLogIAMRoleDefaultPolicy7533133B",
+    "Roles": [
+     {
+      "Ref": "VpcFlowLogIAMRoleB4DCB624"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/VpcFlowLog/IAMRole/DefaultPolicy/Resource"
+   }
+  },
+  "VpcFlowLogF72230C7": {
+   "Type": "AWS::EC2::FlowLog",
+   "Properties": {
+    "DeliverLogsPermissionArn": {
+     "Fn::GetAtt": [
+      "VpcFlowLogIAMRoleB4DCB624",
+      "Arn"
+     ]
+    },
+    "LogDestinationType": "cloud-watch-logs",
+    "LogGroupName": {
+     "Ref": "VpcFlowLogGroup86559C69"
+    },
+    "ResourceId": {
+     "Ref": "RagVpcF255D156"
+    },
+    "ResourceType": "VPC",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "RagNetwork-dev/VpcFlowLog"
+     }
+    ],
+    "TrafficType": "ALL"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/VpcFlowLog/FlowLog"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WR3W6DMAyFn2X3IZvY+gBV1VWVpg3B1NspBLd1CzFKnKIK8e4LP4Xtyp9PTqwjO5bx6k2+PKnGRbq4RiXmss1Y6asI0k8LOpbtodZiczSHZCMSn5eoM58b4F5bKCXP8K3yEhZ90dbOkUbFSGY297DdJ335VLxTDI26i8TiLeAyeG8YbOCHYUwydWsOWc8VGBaTEsJuTVETGp6scztMOioNfz0ZaG+R7ztLvh6i/xPeS2o+6NQ/TNiJkk5OtgHnPw/uBKpKtimNWxhqQmFjQ+yRuk6k4MhbPXi+PNeeO2GoAHlxz7d4JV/DRS4OMbLeMFYg07H+ArNeRzauAQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagNetwork-dev/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "VpcId": {
+   "Value": {
+    "Ref": "RagVpcF255D156"
+   },
+   "Export": {
+    "Name": "rag-vpc-id-dev"
+   }
+  },
+  "ExportsOutputRefRagVpcF255D156A9DBD65D": {
+   "Value": {
+    "Ref": "RagVpcF255D156"
+   },
+   "Export": {
+    "Name": "RagNetwork-dev:ExportsOutputRefRagVpcF255D156A9DBD65D"
+   }
+  },
+  "ExportsOutputRefRagVpcisolatedSubnet1Subnet61457814A97D6AFE": {
+   "Value": {
+    "Ref": "RagVpcisolatedSubnet1Subnet61457814"
+   },
+   "Export": {
+    "Name": "RagNetwork-dev:ExportsOutputRefRagVpcisolatedSubnet1Subnet61457814A97D6AFE"
+   }
+  },
+  "ExportsOutputRefRagVpcprivateSubnet1Subnet01559DA95537357C": {
+   "Value": {
+    "Ref": "RagVpcprivateSubnet1Subnet01559DA9"
+   },
+   "Export": {
+    "Name": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet1Subnet01559DA95537357C"
+   }
+  },
+  "ExportsOutputRefRagVpcprivateSubnet2Subnet34F37733460A9BF6": {
+   "Value": {
+    "Ref": "RagVpcprivateSubnet2Subnet34F37733"
+   },
+   "Export": {
+    "Name": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet2Subnet34F37733460A9BF6"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

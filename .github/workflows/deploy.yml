@@ -1,0 +1,146 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Target stage
+        required: true
+        default: dev
+        type: choice
+        options: [dev, prod]
+
+# Cancel any in-progress deploy on the same branch to prevent race conditions
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  STAGE: ${{ github.event.inputs.stage || 'dev' }}
+
+permissions:
+  id-token: write   # required for OIDC token exchange
+  contents: read
+
+jobs:
+  # ── Job 1: Build and push the API Docker image ──────────────────────────────
+  build-api:
+    name: Build & Push API image
+    runs-on: ubuntu-latest
+
+    outputs:
+      image-uri: ${{ steps.image.outputs.uri }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set image URI
+        id: image
+        run: |
+          REPO="${{ steps.ecr-login.outputs.registry }}/rag-api-${{ env.STAGE }}"
+          SHA="${{ github.sha }}"
+          echo "uri=${REPO}:${SHA}" >> "$GITHUB_OUTPUT"
+          echo "repo=${REPO}" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: services/api
+          file: services/api/Dockerfile
+          push: true
+          # Tag with both the git SHA (immutable) and 'latest' (for ECS task
+          # definitions that reference a floating tag)
+          tags: |
+            ${{ steps.image.outputs.uri }}
+            ${{ steps.ecr-login.outputs.registry }}/rag-api-${{ env.STAGE }}:latest
+          # Use GitHub Actions cache to skip rebuilding unchanged layers
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/arm64   # matches ECS Fargate ARM64 task definition
+
+  # ── Job 2: Deploy updated image to ECS ──────────────────────────────────────
+  deploy-ecs:
+    name: Deploy to ECS
+    runs-on: ubuntu-latest
+    needs: build-api
+    environment: ${{ github.event.inputs.stage || 'dev' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Download current task definition
+        run: |
+          aws ecs describe-task-definition \
+            --task-definition rag-api-${{ env.STAGE }} \
+            --query taskDefinition \
+            > task-definition.json
+
+      - name: Update container image in task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: ApiContainer
+          image: ${{ needs.build-api.outputs.image-uri }}
+
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: rag-api-${{ env.STAGE }}
+          cluster: rag-cluster-${{ env.STAGE }}
+          # Wait until the new tasks are healthy before marking the workflow green.
+          # If the new tasks fail health checks, ECS rolls back automatically
+          # (circuit breaker is enabled in the CDK stack).
+          wait-for-service-stability: true
+
+  # ── Job 3: Smoke test after deploy ──────────────────────────────────────────
+  smoke-test:
+    name: Smoke test
+    runs-on: ubuntu-latest
+    needs: deploy-ecs
+
+    steps:
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Get API endpoint from CloudFormation
+        id: endpoint
+        run: |
+          URL=$(aws cloudformation describe-stacks \
+            --stack-name RagApi-${{ env.STAGE }} \
+            --query "Stacks[0].Outputs[?OutputKey=='ApiEndpoint'].OutputValue" \
+            --output text)
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Health check
+        run: |
+          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" \
+            "${{ steps.endpoint.outputs.url }}/health")
+          if [ "$STATUS" != "200" ]; then
+            echo "Health check failed with status $STATUS"
+            exit 1
+          fi
+          echo "Health check passed (HTTP $STATUS)"

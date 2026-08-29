@@ -1,0 +1,387 @@
+{
+  "/RagStorage-dev": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "false"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "dev"
+        }
+      ]
+    }
+  ],
+  "/RagStorage-dev/SessionsTable": [
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "SessionsTable7C302024"
+      }
+    }
+  ],
+  "/RagStorage-dev/RawDocsBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RawDocsBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:91:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/SessionsTableName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SessionsTableName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:95:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/KmsKeyArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "KmsKeyArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:99:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/RagKmsKey/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagKmsKeyF524427B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Key2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:23:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/RawDocsBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RawDocsBucketA4EEA902"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:42:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db8347ECC3691"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:42:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/ProcessedDocsBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ProcessedDocsBucket4DF2F48A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:63:32)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/SessionsTable/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SessionsTable7C302024"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Table2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:69:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/Exports/Output{\"Fn::GetAtt\":[\"RagKmsKeyF524427B\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttRagKmsKeyF524427BArnC4B1A43D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/Exports/Output{\"Fn::GetAtt\":[\"RawDocsBucketA4EEA902\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttRawDocsBucketA4EEA902Arn2B834980"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/Exports/Output{\"Fn::GetAtt\":[\"ProcessedDocsBucket4DF2F48A\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttProcessedDocsBucket4DF2F48AArn01512BB0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/Exports/Output{\"Ref\":\"ProcessedDocsBucket4DF2F48A\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefProcessedDocsBucket4DF2F48A38C82594"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/Exports/Output{\"Ref\":\"RawDocsBucketA4EEA902\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefRawDocsBucketA4EEA9025C767A14"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/Exports/Output{\"Fn::GetAtt\":[\"SessionsTable7C302024\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttSessionsTable7C302024Arn24FF8012"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/Exports/Output{\"Ref\":\"SessionsTable7C302024\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefSessionsTable7C3020246E1CCFDD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/RagKmsKey/Alias/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagKmsKeyAlias34AC60FE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Key2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:23:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/RawDocsBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RawDocsBucketPolicy1F75CB46"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:42:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/RawDocsBucket/Notifications/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RawDocsBucketNotificationsC41C65B2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:42:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db834RoleB6FB88EC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:42:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/ProcessedDocsBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ProcessedDocsBucketPolicy0CD5AD66"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:63:32)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagStorage-dev/RawDocsBucket/Notifications/HandlerPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RawDocsBucketNotificationsHandlerPolicy30294615"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/storage-stack.ts:42:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:44:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+ "Resources": {
+  "OpenSearchSg98CA9349": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "OpenSearch domain - allow HTTPS from within VPC only",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "10.10.0.0/16",
+      "Description": "HTTPS from VPC CIDR",
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcF255D156A9DBD65D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/OpenSearchSg/Resource"
+   }
+  },
+  "OsSlowSearchLogs917290A7": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": "/rag/opensearch/slow-search/dev",
+    "RetentionInDays": 7
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/OsSlowSearchLogs/Resource"
+   }
+  },
+  "OsAppLogsF9688EB7": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": "/rag/opensearch/app/dev",
+    "RetentionInDays": 14
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/OsAppLogs/Resource"
+   }
+  },
+  "RagOpenSearchSlowIndexLogs37B4D753": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "RetentionInDays": 30
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/RagOpenSearch/SlowIndexLogs/Resource"
+   }
+  },
+  "RagOpenSearchESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e532FC6338E": {
+   "Type": "Custom::CloudwatchLogResourcePolicy",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+      "Arn"
+     ]
+    },
+    "Create": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"service\":\"CloudWatchLogs\",\"action\":\"putResourcePolicy\",\"parameters\":{\"policyName\":\"ESLogPolicyc81181038e238339fd79faf552245b94655c2b8e53\",\"policyDocument\":\"{\\\"Statement\\\":[{\\\"Action\\\":[\\\"logs:PutLogEvents\\\",\\\"logs:CreateLogStream\\\"],\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"Service\\\":\\\"es.amazonaws.com\\\"},\\\"Resource\\\":[\\\"",
+       {
+        "Fn::GetAtt": [
+         "OsSlowSearchLogs917290A7",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"",
+       {
+        "Fn::GetAtt": [
+         "RagOpenSearchSlowIndexLogs37B4D753",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"",
+       {
+        "Fn::GetAtt": [
+         "OsAppLogsF9688EB7",
+         "Arn"
+        ]
+       },
+       "\\\"]}],\\\"Version\\\":\\\"2012-10-17\\\"}\"},\"physicalResourceId\":{\"id\":\"ESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53\"}}"
+      ]
+     ]
+    },
+    "Update": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"service\":\"CloudWatchLogs\",\"action\":\"putResourcePolicy\",\"parameters\":{\"policyName\":\"ESLogPolicyc81181038e238339fd79faf552245b94655c2b8e53\",\"policyDocument\":\"{\\\"Statement\\\":[{\\\"Action\\\":[\\\"logs:PutLogEvents\\\",\\\"logs:CreateLogStream\\\"],\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"Service\\\":\\\"es.amazonaws.com\\\"},\\\"Resource\\\":[\\\"",
+       {
+        "Fn::GetAtt": [
+         "OsSlowSearchLogs917290A7",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"",
+       {
+        "Fn::GetAtt": [
+         "RagOpenSearchSlowIndexLogs37B4D753",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"",
+       {
+        "Fn::GetAtt": [
+         "OsAppLogsF9688EB7",
+         "Arn"
+        ]
+       },
+       "\\\"]}],\\\"Version\\\":\\\"2012-10-17\\\"}\"},\"physicalResourceId\":{\"id\":\"ESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53\"}}"
+      ]
+     ]
+    },
+    "Delete": "{\"service\":\"CloudWatchLogs\",\"action\":\"deleteResourcePolicy\",\"parameters\":{\"policyName\":\"ESLogPolicyc81181038e238339fd79faf552245b94655c2b8e53\"},\"ignoreErrorCodesMatching\":\"ResourceNotFoundException\"}",
+    "InstallLatestAwsSdk": false
+   },
+   "DependsOn": [
+    "RagOpenSearchESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53CustomResourcePolicyAAC6F029"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/RagOpenSearch/ESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53/Resource/Default"
+   }
+  },
+  "RagOpenSearchESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53CustomResourcePolicyAAC6F029": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:DeleteResourcePolicy",
+        "logs:PutResourcePolicy"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "RagOpenSearchESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53CustomResourcePolicyAAC6F029",
+    "Roles": [
+     {
+      "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/RagOpenSearch/ESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53/CustomResourcePolicy/Resource"
+   }
+  },
+  "RagOpenSearch5257567F": {
+   "Type": "AWS::OpenSearchService::Domain",
+   "Properties": {
+    "AdvancedSecurityOptions": {
+     "Enabled": true,
+     "InternalUserDatabaseEnabled": false,
+     "MasterUserOptions": {
+      "MasterUserARN": "arn:aws:iam::774200944025:root"
+     }
+    },
+    "ClusterConfig": {
+     "DedicatedMasterEnabled": false,
+     "InstanceCount": 1,
+     "InstanceType": "t3.small.search",
+     "ZoneAwarenessEnabled": false
+    },
+    "DomainEndpointOptions": {
+     "EnforceHTTPS": true,
+     "TLSSecurityPolicy": "Policy-Min-TLS-1-2-2019-07"
+    },
+    "DomainName": "rag-search-dev",
+    "EBSOptions": {
+     "EBSEnabled": true,
+     "Iops": 3000,
+     "Throughput": 250,
+     "VolumeSize": 20,
+     "VolumeType": "gp3"
+    },
+    "EncryptionAtRestOptions": {
+     "Enabled": true
+    },
+    "EngineVersion": "OpenSearch_2.13",
+    "LogPublishingOptions": {
+     "SEARCH_SLOW_LOGS": {
+      "CloudWatchLogsLogGroupArn": {
+       "Fn::GetAtt": [
+        "OsSlowSearchLogs917290A7",
+        "Arn"
+       ]
+      },
+      "Enabled": true
+     },
+     "INDEX_SLOW_LOGS": {
+      "CloudWatchLogsLogGroupArn": {
+       "Fn::GetAtt": [
+        "RagOpenSearchSlowIndexLogs37B4D753",
+        "Arn"
+       ]
+      },
+      "Enabled": true
+     },
+     "ES_APPLICATION_LOGS": {
+      "CloudWatchLogsLogGroupArn": {
+       "Fn::GetAtt": [
+        "OsAppLogsF9688EB7",
+        "Arn"
+       ]
+      },
+      "Enabled": true
+     }
+    },
+    "NodeToNodeEncryptionOptions": {
+     "Enabled": true
+    },
+    "VPCOptions": {
+     "SecurityGroupIds": [
+      {
+       "Fn::GetAtt": [
+        "OpenSearchSg98CA9349",
+        "GroupId"
+       ]
+      }
+     ],
+     "SubnetIds": [
+      {
+       "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcisolatedSubnet1Subnet61457814A97D6AFE"
+      }
+     ]
+    }
+   },
+   "DependsOn": [
+    "RagOpenSearchESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e53CustomResourcePolicyAAC6F029",
+    "RagOpenSearchESLogGroupPolicyc81181038e238339fd79faf552245b94655c2b8e532FC6338E"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/RagOpenSearch/Resource"
+   }
+  },
+  "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/AWS679f53fac002430cb0da5b7982bd2287/ServiceRole/Resource"
+   }
+  },
+  "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-774200944025-us-east-1",
+     "S3Key": "56f7467bbde8a5efebcf57ae9e460027607099bab9f844669dcf5d800172ee5a.zip"
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 120
+   },
+   "DependsOn": [
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/AWS679f53fac002430cb0da5b7982bd2287/Resource",
+    "aws:asset:path": "asset.56f7467bbde8a5efebcf57ae9e460027607099bab9f844669dcf5d800172ee5a",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "OsLogResourcePolicyAD8FA12F": {
+   "Type": "AWS::Logs::ResourcePolicy",
+   "Properties": {
+    "PolicyDocument": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"Statement\":[{\"Action\":[\"logs:PutLogEvents\",\"logs:CreateLogStream\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"es.amazonaws.com\"},\"Resource\":[\"",
+       {
+        "Fn::GetAtt": [
+         "OsSlowSearchLogs917290A7",
+         "Arn"
+        ]
+       },
+       "\",\"",
+       {
+        "Fn::GetAtt": [
+         "OsAppLogsF9688EB7",
+         "Arn"
+        ]
+       },
+       "\"]}],\"Version\":\"2012-10-17\"}"
+      ]
+     ]
+    },
+    "PolicyName": "RagOpenSearchdevOsLogResourcePolicyA6025AC5"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/OsLogResourcePolicy/ResourcePolicy"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11QQU7DQAx8C/eNQSl9AC2CCxIoPCDabkxwk6yj9W6rKsrfcdI2VTl5PDOyx84hXz/D04M9SuaqJmtpB8N3tK4xSpUDulx7dClQPL0HTr3Z/vg7YjQt1wLDB9eLYcEFCqfg8ItbcqdJumdGwz16QRvcr2A4kEMYXrmz5CfzGekG2+0qq0nI1y1G9m/Ju0jszQLUfcWjIdvBcNt5QQW3OEfQOhpZlVYEo8DLVLSHTXINxo0VlV2SyF0ZLnHVdZTtzF0vMP/b23FmHql/rDXwJHym2Kc4Gs8Vwl4eD/kaVvr3vRBlIflIHUJxrn8zvzTllAEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagOpenSearch-dev/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "OpenSearchEndpoint": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagOpenSearch5257567F",
+     "DomainEndpoint"
+    ]
+   },
+   "Export": {
+    "Name": "rag-opensearch-endpoint-dev"
+   }
+  },
+  "OpenSearchDomainArn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagOpenSearch5257567F",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "rag-opensearch-arn-dev"
+   }
+  },
+  "ExportsOutputFnGetAttRagOpenSearch5257567FArn47603301": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagOpenSearch5257567F",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "RagOpenSearch-dev:ExportsOutputFnGetAttRagOpenSearch5257567FArn47603301"
+   }
+  },
+  "ExportsOutputFnGetAttRagOpenSearch5257567FDomainEndpoint33FB5C32": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagOpenSearch5257567F",
+     "DomainEndpoint"
+    ]
+   },
+   "Export": {
+    "Name": "RagOpenSearch-dev:ExportsOutputFnGetAttRagOpenSearch5257567FDomainEndpoint33FB5C32"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

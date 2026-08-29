@@ -1,0 +1,296 @@
+{
+  "/RagOpenSearch-test": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "true"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "test"
+        }
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/RagOpenSearch": [
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": "rag-search-test"
+    }
+  ],
+  "/RagOpenSearch-test/AWS679f53fac002430cb0da5b7982bd2287": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-singleton",
+      "data": true
+    },
+    {
+      "type": "aws:cdk:is-custom-resource-handler-runtime-family",
+      "data": 0
+    }
+  ],
+  "/RagOpenSearch-test/OpenSearchEndpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OpenSearchEndpoint"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:113:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/OpenSearchDomainArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OpenSearchDomainArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:117:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/OpenSearchSg/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OpenSearchSg98CA9349"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new SecurityGroup2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:24:32)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/OsSlowSearchLogs/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OsSlowSearchLogs917290A7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new LogGroup2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:38:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/OsAppLogs/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OsAppLogsF9688EB7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new LogGroup2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:43:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/RagOpenSearch/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagOpenSearch5257567F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Domain2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:51:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/AWS679f53fac002430cb0da5b7982bd2287/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AWS679f53fac002430cb0da5b7982bd22872D164C4C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Domain2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:51:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/OsLogResourcePolicy/ResourcePolicy": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OsLogResourcePolicyAD8FA12F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ResourcePolicy2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:109:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/Exports/Output{\"Fn::GetAtt\":[\"RagOpenSearch5257567F\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttRagOpenSearch5257567FArn47603301"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/Exports/Output{\"Fn::GetAtt\":[\"RagOpenSearch5257567F\",\"DomainEndpoint\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttRagOpenSearch5257567FDomainEndpoint33FB5C32"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/RagOpenSearch/SlowIndexLogs/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagOpenSearchSlowIndexLogs37B4D753"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Domain2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:51:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/AWS679f53fac002430cb0da5b7982bd2287/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Domain2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:51:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/RagOpenSearch/ESLogGroupPolicyc80572b938fafd54518c40246fb519f119cdad04fb/Resource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagOpenSearchESLogGroupPolicyc80572b938fafd54518c40246fb519f119cdad04fbB5AEBD72"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Domain2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:51:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagOpenSearch-test/RagOpenSearch/ESLogGroupPolicyc80572b938fafd54518c40246fb519f119cdad04fb/CustomResourcePolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagOpenSearchESLogGroupPolicyc80572b938fafd54518c40246fb519f119cdad04fbCustomResourcePolicyC42ADBAD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Domain2 in aws-cdk-lib...",
+        "new OpenSearchStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/opensearch-stack.ts:51:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:52:20)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

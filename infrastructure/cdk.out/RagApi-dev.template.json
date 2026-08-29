@@ -1,0 +1,1290 @@
+{
+ "Resources": {
+  "RagUserPoolCC9E0B99": {
+   "Type": "AWS::Cognito::UserPool",
+   "Properties": {
+    "AccountRecoverySetting": {
+     "RecoveryMechanisms": [
+      {
+       "Name": "verified_email",
+       "Priority": 1
+      }
+     ]
+    },
+    "AdminCreateUserConfig": {
+     "AllowAdminCreateUserOnly": true
+    },
+    "AutoVerifiedAttributes": [
+     "email"
+    ],
+    "EmailVerificationMessage": "The verification code to your new account is {####}",
+    "EmailVerificationSubject": "Verify your new account",
+    "EnabledMfas": [
+     "SOFTWARE_TOKEN_MFA"
+    ],
+    "MfaConfiguration": "OPTIONAL",
+    "Policies": {
+     "PasswordPolicy": {
+      "MinimumLength": 12,
+      "RequireLowercase": true,
+      "RequireNumbers": true,
+      "RequireSymbols": true,
+      "RequireUppercase": true,
+      "TemporaryPasswordValidityDays": 3
+     }
+    },
+    "Schema": [
+     {
+      "Mutable": false,
+      "Name": "email",
+      "Required": true
+     },
+     {
+      "AttributeDataType": "String",
+      "Mutable": true,
+      "Name": "namespace"
+     },
+     {
+      "AttributeDataType": "String",
+      "Mutable": true,
+      "Name": "roles"
+     }
+    ],
+    "SmsVerificationMessage": "The verification code to your new account is {####}",
+    "UserPoolName": "rag-users-dev",
+    "UsernameAttributes": [
+     "email"
+    ],
+    "VerificationMessageTemplate": {
+     "DefaultEmailOption": "CONFIRM_WITH_CODE",
+     "EmailMessage": "The verification code to your new account is {####}",
+     "EmailSubject": "Verify your new account",
+     "SmsMessage": "The verification code to your new account is {####}"
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagUserPool/Resource"
+   }
+  },
+  "RagUserPoolUserPoolDomain8EDBEF11": {
+   "Type": "AWS::Cognito::UserPoolDomain",
+   "Properties": {
+    "Domain": "rag-dev-774200944025",
+    "UserPoolId": {
+     "Ref": "RagUserPoolCC9E0B99"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagUserPool/UserPoolDomain/Resource"
+   }
+  },
+  "UserPoolClient2F5918F7": {
+   "Type": "AWS::Cognito::UserPoolClient",
+   "Properties": {
+    "AccessTokenValidity": 60,
+    "AllowedOAuthFlows": [
+     "code"
+    ],
+    "AllowedOAuthFlowsUserPoolClient": true,
+    "AllowedOAuthScopes": [
+     "email",
+     "openid",
+     "profile"
+    ],
+    "CallbackURLs": [
+     "https://example.com"
+    ],
+    "ClientName": "rag-api-client-dev",
+    "ExplicitAuthFlows": [
+     "ALLOW_USER_PASSWORD_AUTH",
+     "ALLOW_USER_SRP_AUTH",
+     "ALLOW_REFRESH_TOKEN_AUTH"
+    ],
+    "IdTokenValidity": 60,
+    "PreventUserExistenceErrors": "ENABLED",
+    "RefreshTokenValidity": 43200,
+    "SupportedIdentityProviders": [
+     "COGNITO"
+    ],
+    "TokenValidityUnits": {
+     "AccessToken": "minutes",
+     "IdToken": "minutes",
+     "RefreshToken": "minutes"
+    },
+    "UserPoolId": {
+     "Ref": "RagUserPoolCC9E0B99"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/UserPoolClient/Resource"
+   }
+  },
+  "ApiRepoEFA7BA97": {
+   "Type": "AWS::ECR::Repository",
+   "Properties": {
+    "EncryptionConfiguration": {
+     "EncryptionType": "KMS",
+     "KmsKey": {
+      "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttRagKmsKeyF524427BArnC4B1A43D"
+     }
+    },
+    "ImageScanningConfiguration": {
+     "ScanOnPush": true
+    },
+    "ImageTagMutability": "IMMUTABLE",
+    "LifecyclePolicy": {
+     "LifecyclePolicyText": "{\"rules\":[{\"rulePriority\":1,\"selection\":{\"tagStatus\":\"any\",\"countType\":\"imageCountMoreThan\",\"countNumber\":10},\"action\":{\"type\":\"expire\"}}]}"
+    },
+    "RepositoryName": "rag-api-dev"
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiRepo/Resource"
+   }
+  },
+  "RagCluster4ADD1CF7": {
+   "Type": "AWS::ECS::Cluster",
+   "Properties": {
+    "ClusterName": "rag-cluster-dev",
+    "ClusterSettings": [
+     {
+      "Name": "containerInsights",
+      "Value": "enabled"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagCluster/Resource"
+   }
+  },
+  "ApiTaskRole12FAD4A7": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "RoleName": "rag-api-task-dev"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiTaskRole/Resource"
+   }
+  },
+  "ApiTaskRoleDefaultPolicyBEF5D530": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttSessionsTable7C302024Arn24FF8012"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttSessionsTable7C302024Arn24FF8012"
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "kms:Decrypt",
+        "kms:DescribeKey",
+        "kms:Encrypt",
+        "kms:GenerateDataKey*",
+        "kms:ReEncrypt*"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttRagKmsKeyF524427BArnC4B1A43D"
+       }
+      },
+      {
+       "Action": [
+        "es:ESHttpDelete",
+        "es:ESHttpGet",
+        "es:ESHttpHead",
+        "es:ESHttpPatch",
+        "es:ESHttpPost",
+        "es:ESHttpPut"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::ImportValue": "RagOpenSearch-dev:ExportsOutputFnGetAttRagOpenSearch5257567FArn47603301"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "RagOpenSearch-dev:ExportsOutputFnGetAttRagOpenSearch5257567FArn47603301"
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v2:0",
+        "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-sonnet-20240229-v1:0"
+       ],
+       "Sid": "BedrockInvoke"
+      },
+      {
+       "Action": [
+        "s3:Abort*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttRawDocsBucketA4EEA902Arn2B834980"
+          },
+          "/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttRawDocsBucketA4EEA902Arn2B834980"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttRawDocsBucketA4EEA902Arn2B834980"
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "cognito-idp:AdminCreateUser",
+        "cognito-idp:AdminDeleteUser",
+        "cognito-idp:AdminGetUser",
+        "cognito-idp:AdminSetUserPassword",
+        "cognito-idp:AdminUpdateUserAttributes",
+        "cognito-idp:ListUsers"
+       ],
+       "Effect": "Allow",
+       "Resource": "arn:aws:cognito-idp:us-east-1:774200944025:userpool/*",
+       "Sid": "CognitoAdminOps"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ApiTaskRoleDefaultPolicyBEF5D530",
+    "Roles": [
+     {
+      "Ref": "ApiTaskRole12FAD4A7"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiTaskRole/DefaultPolicy/Resource"
+   }
+  },
+  "ApiExecutionRole6C67842D": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+       ]
+      ]
+     }
+    ],
+    "RoleName": "rag-api-execution-dev"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiExecutionRole/Resource"
+   }
+  },
+  "ApiExecutionRoleDefaultPolicyCA8C38F6": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "kms:Decrypt",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "RagStorage-dev:ExportsOutputFnGetAttRagKmsKeyF524427BArnC4B1A43D"
+       }
+      },
+      {
+       "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:GetDownloadUrlForLayer"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "ApiRepoEFA7BA97",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": "ecr:GetAuthorizationToken",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "ApiLogGroup1DEDFC07",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ApiExecutionRoleDefaultPolicyCA8C38F6",
+    "Roles": [
+     {
+      "Ref": "ApiExecutionRole6C67842D"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiExecutionRole/DefaultPolicy/Resource"
+   }
+  },
+  "ApiLogGroup1DEDFC07": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": "/rag/api/dev",
+    "RetentionInDays": 30
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiLogGroup/Resource"
+   }
+  },
+  "ApiTaskDef37DBDBD0": {
+   "Type": "AWS::ECS::TaskDefinition",
+   "Properties": {
+    "ContainerDefinitions": [
+     {
+      "Environment": [
+       {
+        "Name": "STAGE",
+        "Value": "dev"
+       },
+       {
+        "Name": "OPENSEARCH_ENDPOINT",
+        "Value": {
+         "Fn::ImportValue": "RagOpenSearch-dev:ExportsOutputFnGetAttRagOpenSearch5257567FDomainEndpoint33FB5C32"
+        }
+       },
+       {
+        "Name": "SESSIONS_TABLE",
+        "Value": {
+         "Fn::ImportValue": "RagStorage-dev:ExportsOutputRefSessionsTable7C3020246E1CCFDD"
+        }
+       },
+       {
+        "Name": "CACHE_HOST",
+        "Value": {
+         "Fn::ImportValue": "RagCache-dev:ExportsOutputFnGetAttRagCachePrimaryEndPointAddressD0CDC6D0"
+        }
+       },
+       {
+        "Name": "CACHE_PORT",
+        "Value": {
+         "Fn::ImportValue": "RagCache-dev:ExportsOutputFnGetAttRagCachePrimaryEndPointPort738DA134"
+        }
+       },
+       {
+        "Name": "COGNITO_USER_POOL_ID",
+        "Value": {
+         "Ref": "RagUserPoolCC9E0B99"
+        }
+       },
+       {
+        "Name": "RAW_DOCS_BUCKET",
+        "Value": {
+         "Fn::ImportValue": "RagStorage-dev:ExportsOutputRefRawDocsBucketA4EEA9025C767A14"
+        }
+       },
+       {
+        "Name": "AWS_DEFAULT_REGION",
+        "Value": "us-east-1"
+       }
+      ],
+      "Essential": true,
+      "HealthCheck": {
+       "Command": [
+        "CMD-SHELL",
+        "curl -sf http://localhost:8000/health || exit 1"
+       ],
+       "Interval": 30,
+       "Retries": 3,
+       "StartPeriod": 60,
+       "Timeout": 5
+      },
+      "Image": {
+       "Fn::Join": [
+        "",
+        [
+         {
+          "Fn::Select": [
+           4,
+           {
+            "Fn::Split": [
+             ":",
+             {
+              "Fn::GetAtt": [
+               "ApiRepoEFA7BA97",
+               "Arn"
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         ".dkr.ecr.",
+         {
+          "Fn::Select": [
+           3,
+           {
+            "Fn::Split": [
+             ":",
+             {
+              "Fn::GetAtt": [
+               "ApiRepoEFA7BA97",
+               "Arn"
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         ".",
+         {
+          "Ref": "AWS::URLSuffix"
+         },
+         "/",
+         {
+          "Ref": "ApiRepoEFA7BA97"
+         },
+         ":latest"
+        ]
+       ]
+      },
+      "LogConfiguration": {
+       "LogDriver": "awslogs",
+       "Options": {
+        "awslogs-group": {
+         "Ref": "ApiLogGroup1DEDFC07"
+        },
+        "awslogs-stream-prefix": "api",
+        "awslogs-region": "us-east-1"
+       }
+      },
+      "Name": "ApiContainer",
+      "PortMappings": [
+       {
+        "ContainerPort": 8000,
+        "Protocol": "tcp"
+       }
+      ]
+     }
+    ],
+    "Cpu": "256",
+    "ExecutionRoleArn": {
+     "Fn::GetAtt": [
+      "ApiExecutionRole6C67842D",
+      "Arn"
+     ]
+    },
+    "Family": "RagApidevApiTaskDef57E65B3C",
+    "Memory": "512",
+    "NetworkMode": "awsvpc",
+    "RequiresCompatibilities": [
+     "FARGATE"
+    ],
+    "RuntimePlatform": {
+     "CpuArchitecture": "ARM64",
+     "OperatingSystemFamily": "LINUX"
+    },
+    "TaskRoleArn": {
+     "Fn::GetAtt": [
+      "ApiTaskRole12FAD4A7",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiTaskDef/Resource"
+   }
+  },
+  "AlbSg1155C1BE": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Internal ALB - receive traffic from API GW VPC Link",
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "10.10.0.0/16",
+      "Description": "HTTP from VPC CIDR (API GW VPC Link)",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcF255D156A9DBD65D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/AlbSg/Resource"
+   }
+  },
+  "AlbSgtoRagApidevApiServiceSgFCB795638000E76A08B4": {
+   "Type": "AWS::EC2::SecurityGroupEgress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "DestinationSecurityGroupId": {
+     "Fn::GetAtt": [
+      "ApiServiceSg857FEC5F",
+      "GroupId"
+     ]
+    },
+    "FromPort": 8000,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "AlbSg1155C1BE",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "ToPort": 8000
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/AlbSg/to RagApidevApiServiceSgFCB79563:8000"
+   }
+  },
+  "ApiServiceSg857FEC5F": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "ECS API service",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcF255D156A9DBD65D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiServiceSg/Resource"
+   }
+  },
+  "ApiServiceSgfromRagApidevAlbSg8F6E072D800013C98213": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "ALB to container port 8000",
+    "FromPort": 8000,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "ApiServiceSg857FEC5F",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "AlbSg1155C1BE",
+      "GroupId"
+     ]
+    },
+    "ToPort": 8000
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiServiceSg/from RagApidevAlbSg8F6E072D:8000"
+   }
+  },
+  "ApiAlbDD21E9E1": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     }
+    ],
+    "Scheme": "internal",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "AlbSg1155C1BE",
+       "GroupId"
+      ]
+     }
+    ],
+    "Subnets": [
+     {
+      "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet1Subnet01559DA95537357C"
+     },
+     {
+      "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet2Subnet34F37733460A9BF6"
+     }
+    ],
+    "Type": "application"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiAlb/Resource"
+   }
+  },
+  "ApiAlbHttpListenerA8172EA3": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "ApiAlbHttpListenerApiTargetsGroup66E3770D"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "ApiAlbDD21E9E1"
+    },
+    "Port": 80,
+    "Protocol": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiAlb/HttpListener/Resource"
+   }
+  },
+  "ApiAlbHttpListenerApiTargetsGroup66E3770D": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "HealthCheckIntervalSeconds": 30,
+    "HealthCheckPath": "/health",
+    "HealthyThresholdCount": 2,
+    "Name": "rag-api-tg-dev",
+    "Port": 8000,
+    "Protocol": "HTTP",
+    "TargetGroupAttributes": [
+     {
+      "Key": "deregistration_delay.timeout_seconds",
+      "Value": "30"
+     },
+     {
+      "Key": "stickiness.enabled",
+      "Value": "false"
+     }
+    ],
+    "TargetType": "ip",
+    "UnhealthyThresholdCount": 3,
+    "VpcId": {
+     "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcF255D156A9DBD65D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiAlb/HttpListener/ApiTargetsGroup/Resource"
+   }
+  },
+  "ApiServiceC9037CF0": {
+   "Type": "AWS::ECS::Service",
+   "Properties": {
+    "Cluster": {
+     "Ref": "RagCluster4ADD1CF7"
+    },
+    "DeploymentConfiguration": {
+     "Alarms": {
+      "AlarmNames": [],
+      "Enable": false,
+      "Rollback": false
+     },
+     "DeploymentCircuitBreaker": {
+      "Enable": true,
+      "Rollback": true
+     },
+     "MaximumPercent": 200,
+     "MinimumHealthyPercent": 50
+    },
+    "DesiredCount": 1,
+    "EnableECSManagedTags": true,
+    "HealthCheckGracePeriodSeconds": 60,
+    "LaunchType": "FARGATE",
+    "LoadBalancers": [
+     {
+      "ContainerName": "ApiContainer",
+      "ContainerPort": 8000,
+      "TargetGroupArn": {
+       "Ref": "ApiAlbHttpListenerApiTargetsGroup66E3770D"
+      }
+     }
+    ],
+    "NetworkConfiguration": {
+     "AwsvpcConfiguration": {
+      "AssignPublicIp": "DISABLED",
+      "SecurityGroups": [
+       {
+        "Fn::GetAtt": [
+         "ApiServiceSg857FEC5F",
+         "GroupId"
+        ]
+       }
+      ],
+      "Subnets": [
+       {
+        "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet1Subnet01559DA95537357C"
+       },
+       {
+        "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet2Subnet34F37733460A9BF6"
+       }
+      ]
+     }
+    },
+    "PropagateTags": "TASK_DEFINITION",
+    "ServiceName": "rag-api-dev",
+    "TaskDefinition": {
+     "Ref": "ApiTaskDef37DBDBD0"
+    }
+   },
+   "DependsOn": [
+    "ApiAlbHttpListenerApiTargetsGroup66E3770D",
+    "ApiAlbHttpListenerA8172EA3",
+    "ApiTaskRoleDefaultPolicyBEF5D530",
+    "ApiTaskRole12FAD4A7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiService/Service"
+   }
+  },
+  "ApiServiceTaskCountTargetBFC64025": {
+   "Type": "AWS::ApplicationAutoScaling::ScalableTarget",
+   "Properties": {
+    "MaxCapacity": 2,
+    "MinCapacity": 1,
+    "ResourceId": {
+     "Fn::Join": [
+      "",
+      [
+       "service/",
+       {
+        "Ref": "RagCluster4ADD1CF7"
+       },
+       "/",
+       {
+        "Fn::GetAtt": [
+         "ApiServiceC9037CF0",
+         "Name"
+        ]
+       }
+      ]
+     ]
+    },
+    "RoleARN": "arn:aws:iam::774200944025:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService",
+    "ScalableDimension": "ecs:service:DesiredCount",
+    "ServiceNamespace": "ecs"
+   },
+   "DependsOn": [
+    "ApiTaskRoleDefaultPolicyBEF5D530",
+    "ApiTaskRole12FAD4A7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiService/TaskCount/Target/Resource"
+   }
+  },
+  "ApiServiceTaskCountTargetCpuScaling9EAFB075": {
+   "Type": "AWS::ApplicationAutoScaling::ScalingPolicy",
+   "Properties": {
+    "PolicyName": "RagApidevApiServiceTaskCountTargetCpuScaling73E8B07F",
+    "PolicyType": "TargetTrackingScaling",
+    "ScalingTargetId": {
+     "Ref": "ApiServiceTaskCountTargetBFC64025"
+    },
+    "TargetTrackingScalingPolicyConfiguration": {
+     "PredefinedMetricSpecification": {
+      "PredefinedMetricType": "ECSServiceAverageCPUUtilization"
+     },
+     "ScaleInCooldown": 120,
+     "ScaleOutCooldown": 30,
+     "TargetValue": 70
+    }
+   },
+   "DependsOn": [
+    "ApiTaskRoleDefaultPolicyBEF5D530",
+    "ApiTaskRole12FAD4A7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiService/TaskCount/Target/CpuScaling/Resource"
+   }
+  },
+  "ApiServiceTaskCountTargetRequestScalingE1EB6982": {
+   "Type": "AWS::ApplicationAutoScaling::ScalingPolicy",
+   "Properties": {
+    "PolicyName": "RagApidevApiServiceTaskCountTargetRequestScaling1737AB31",
+    "PolicyType": "TargetTrackingScaling",
+    "ScalingTargetId": {
+     "Ref": "ApiServiceTaskCountTargetBFC64025"
+    },
+    "TargetTrackingScalingPolicyConfiguration": {
+     "PredefinedMetricSpecification": {
+      "PredefinedMetricType": "ALBRequestCountPerTarget",
+      "ResourceLabel": {
+       "Fn::Join": [
+        "",
+        [
+         {
+          "Fn::Select": [
+           1,
+           {
+            "Fn::Split": [
+             "/",
+             {
+              "Ref": "ApiAlbHttpListenerA8172EA3"
+             }
+            ]
+           }
+          ]
+         },
+         "/",
+         {
+          "Fn::Select": [
+           2,
+           {
+            "Fn::Split": [
+             "/",
+             {
+              "Ref": "ApiAlbHttpListenerA8172EA3"
+             }
+            ]
+           }
+          ]
+         },
+         "/",
+         {
+          "Fn::Select": [
+           3,
+           {
+            "Fn::Split": [
+             "/",
+             {
+              "Ref": "ApiAlbHttpListenerA8172EA3"
+             }
+            ]
+           }
+          ]
+         },
+         "/",
+         {
+          "Fn::GetAtt": [
+           "ApiAlbHttpListenerApiTargetsGroup66E3770D",
+           "TargetGroupFullName"
+          ]
+         }
+        ]
+       ]
+      }
+     },
+     "ScaleInCooldown": 120,
+     "ScaleOutCooldown": 30,
+     "TargetValue": 500
+    }
+   },
+   "DependsOn": [
+    "ApiTaskRoleDefaultPolicyBEF5D530",
+    "ApiTaskRole12FAD4A7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/ApiService/TaskCount/Target/RequestScaling/Resource"
+   }
+  },
+  "VpcLink42ED6FF0": {
+   "Type": "AWS::ApiGatewayV2::VpcLink",
+   "Properties": {
+    "Name": "RagApidevVpcLink8A9B1EFC",
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "AlbSg1155C1BE",
+       "GroupId"
+      ]
+     }
+    ],
+    "SubnetIds": [
+     {
+      "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet1Subnet01559DA95537357C"
+     },
+     {
+      "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet2Subnet34F37733460A9BF6"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/VpcLink/Resource"
+   }
+  },
+  "RagHttpApi10ABC037": {
+   "Type": "AWS::ApiGatewayV2::Api",
+   "Properties": {
+    "CorsConfiguration": {
+     "AllowHeaders": [
+      "Content-Type",
+      "Authorization"
+     ],
+     "AllowMethods": [
+      "GET",
+      "POST",
+      "OPTIONS"
+     ],
+     "AllowOrigins": [
+      "*"
+     ],
+     "MaxAge": 86400
+    },
+    "Name": "rag-api-dev",
+    "ProtocolType": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagHttpApi/Resource"
+   }
+  },
+  "RagHttpApiDefaultStage1D5633CC": {
+   "Type": "AWS::ApiGatewayV2::Stage",
+   "Properties": {
+    "ApiId": {
+     "Ref": "RagHttpApi10ABC037"
+    },
+    "AutoDeploy": true,
+    "StageName": "$default"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagHttpApi/DefaultStage/Resource"
+   }
+  },
+  "RagHttpApiANYv1proxyAlbIntegration81F8237C": {
+   "Type": "AWS::ApiGatewayV2::Integration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "RagHttpApi10ABC037"
+    },
+    "ConnectionId": {
+     "Ref": "VpcLink42ED6FF0"
+    },
+    "ConnectionType": "VPC_LINK",
+    "IntegrationMethod": "ANY",
+    "IntegrationType": "HTTP_PROXY",
+    "IntegrationUri": {
+     "Ref": "ApiAlbHttpListenerA8172EA3"
+    },
+    "PayloadFormatVersion": "1.0"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagHttpApi/ANY--v1--{proxy+}/AlbIntegration/Resource"
+   }
+  },
+  "RagHttpApiANYv1proxy87B74A99": {
+   "Type": "AWS::ApiGatewayV2::Route",
+   "Properties": {
+    "ApiId": {
+     "Ref": "RagHttpApi10ABC037"
+    },
+    "AuthorizationType": "JWT",
+    "AuthorizerId": {
+     "Ref": "RagHttpApiCognitoAuthorizer9D48F2BD"
+    },
+    "RouteKey": "ANY /v1/{proxy+}",
+    "Target": {
+     "Fn::Join": [
+      "",
+      [
+       "integrations/",
+       {
+        "Ref": "RagHttpApiANYv1proxyAlbIntegration81F8237C"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagHttpApi/ANY--v1--{proxy+}/Resource"
+   }
+  },
+  "RagHttpApiCognitoAuthorizer9D48F2BD": {
+   "Type": "AWS::ApiGatewayV2::Authorizer",
+   "Properties": {
+    "ApiId": {
+     "Ref": "RagHttpApi10ABC037"
+    },
+    "AuthorizerType": "JWT",
+    "IdentitySource": [
+     "$request.header.Authorization"
+    ],
+    "JwtConfiguration": {
+     "Audience": [
+      {
+       "Ref": "UserPoolClient2F5918F7"
+      }
+     ],
+     "Issuer": {
+      "Fn::Join": [
+       "",
+       [
+        "https://cognito-idp.us-east-1.amazonaws.com/",
+        {
+         "Ref": "RagUserPoolCC9E0B99"
+        }
+       ]
+      ]
+     }
+    },
+    "Name": "CognitoAuthorizer"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagHttpApi/CognitoAuthorizer/Resource"
+   }
+  },
+  "RagHttpApiGEThealth147450DB": {
+   "Type": "AWS::ApiGatewayV2::Route",
+   "Properties": {
+    "ApiId": {
+     "Ref": "RagHttpApi10ABC037"
+    },
+    "AuthorizationType": "NONE",
+    "RouteKey": "GET /health",
+    "Target": {
+     "Fn::Join": [
+      "",
+      [
+       "integrations/",
+       {
+        "Ref": "RagHttpApiANYv1proxyAlbIntegration81F8237C"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/RagHttpApi/GET--health/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/31T227bMAz9lr072pC1H5Cl21ogQIsk3eugKKzLRBENXVKkhv99pBTHTgvsiYeHR9IhTU/V9PZGffui38LEbPcTixvVrqI2+4qpv62h2mEk1T4H8E9Etpq/uAvuwR0dNLpx6cz06dwiuDgWFKarwHjVLqGhwM/4k0iGTMpBtXObQgQvtR7+0r7WEdY67O/gBdkjUjbwkSEX2Qj4EXc+uwJ/RANyqIcro63e2HztnJL4Q31gf2SzLscnsmiy0YK6ylLNLhdU//aUGqn0WBqY8kDBJI/xdKn/n/hZewjhE/3gMs93Wh0iGkt6u2HDzqCrj/zMrGnYkJYmF1z7kWtlblf5WIc8TnfW9HhUX/OsIF5sjtKu0oNMp0iBh8dGuNvLFEWc27hmSlh73jI+sCrnhrFeEfIMyud60yfp8U9jFuj2ouvhfYzNrEGhJEjKG1yXL5uBUEtKsaAHF6H2ut+YD+mgm6X4Sh7fy3SGrOuqJQRKvizPY4pN4k1xtAW1C1+P01v1nX+pXUCceF4iPIBalvgPdJ8Z428DAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagApi-dev/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ApiEndpoint": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagHttpApi10ABC037",
+     "ApiEndpoint"
+    ]
+   },
+   "Export": {
+    "Name": "rag-api-endpoint-dev"
+   }
+  },
+  "UserPoolId": {
+   "Value": {
+    "Ref": "RagUserPoolCC9E0B99"
+   },
+   "Export": {
+    "Name": "rag-user-pool-id-dev"
+   }
+  },
+  "UserPoolClientId": {
+   "Value": {
+    "Ref": "UserPoolClient2F5918F7"
+   },
+   "Export": {
+    "Name": "rag-user-pool-client-id-dev"
+   }
+  },
+  "EcrRepoUri": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      {
+       "Fn::Select": [
+        4,
+        {
+         "Fn::Split": [
+          ":",
+          {
+           "Fn::GetAtt": [
+            "ApiRepoEFA7BA97",
+            "Arn"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      ".dkr.ecr.",
+      {
+       "Fn::Select": [
+        3,
+        {
+         "Fn::Split": [
+          ":",
+          {
+           "Fn::GetAtt": [
+            "ApiRepoEFA7BA97",
+            "Arn"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      ".",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "ApiRepoEFA7BA97"
+      }
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "rag-ecr-uri-dev"
+   }
+  },
+  "CognitoDomain": {
+   "Value": "https://rag-dev-774200944025.auth.us-east-1.amazoncognito.com",
+   "Export": {
+    "Name": "rag-cognito-domain-dev"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

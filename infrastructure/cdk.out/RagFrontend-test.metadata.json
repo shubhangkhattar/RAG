@@ -1,0 +1,273 @@
+{
+  "/RagFrontend-test": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "true"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "test"
+        }
+      ]
+    }
+  ],
+  "/RagFrontend-test/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/RagFrontend-test/SiteBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:77:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/DistributionUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DistributionUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:81:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/DistributionId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DistributionId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:85:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/SiteBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucket397A1860"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:24:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/RagFrontend-test/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:24:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:24:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/Distribution/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Distribution830FAC52"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:32:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/SiteBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketPolicy3AC1D0F8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:24:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/RagFrontend-test/SiteBucket/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketAutoDeleteObjectsCustomResource9585E968"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:24:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/Distribution/Origin1/S3OriginAccessControl/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DistributionOrigin1S3OriginAccessControlEB606076"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:32:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/Distribution/Origin2/S3OriginAccessControl/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DistributionOrigin2S3OriginAccessControlDC470594"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-cloudfront/lib/distribution.js:1:138 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Distribution2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:32:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagFrontend-test/Distribution/Origin3/S3OriginAccessControl/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DistributionOrigin3S3OriginAccessControl9DA31435"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-cloudfront/lib/distribution.js:1:138 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Distribution2 in aws-cdk-lib...",
+        "new FrontendStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/frontend-stack.ts:32:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:103:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

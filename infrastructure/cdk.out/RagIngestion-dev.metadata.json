@@ -1,0 +1,418 @@
+{
+  "/RagIngestion-dev": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "false"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "dev"
+        }
+      ]
+    }
+  ],
+  "/RagIngestion-dev/StateMachineArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StateMachineArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:206:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionLambdaSg/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionLambdaSg66A62FEB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new SecurityGroup2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:33:32)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionDlq/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionDlq9C812474"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Queue2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:40:17)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionLambdaRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionLambdaRole9BF0731D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:47:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/ProcessorFn/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ProcessorFn54060268"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:96:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:96:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/EmbedderFn/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EmbedderFnFA5CAF5D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:113:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionSfnLogs/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionSfnLogs5E5ED3BD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new LogGroup2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:149:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionStateMachine/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionStateMachineA7291D4F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new StateMachine2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:155:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/TriggerFn/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TriggerFnDEDD2D87"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:168:23)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/DocUploadRule/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DocUploadRuleC584B619"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Rule2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:188:27)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/DocUploadRule/AllowEventRuleRagIngestiondevTriggerFnF3F65FF4": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DocUploadRuleAllowEventRuleRagIngestiondevTriggerFnF3F65FF4B281B096"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:199:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionDlq/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionDlqPolicy76948DE4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:199:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionLambdaRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionLambdaRoleDefaultPolicy1ABB879B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantRead in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:54:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/ProcessorFn/LogRetention/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ProcessorFnLogRetention97E37457"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:96:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:96:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/EmbedderFn/LogRetention/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EmbedderFnLogRetention393BBAAA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:113:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionStateMachine/Role/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionStateMachineRole4303D0D1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new StateMachine2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:155:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/TriggerFn/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TriggerFnServiceRole8F8E5516"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:168:23)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/TriggerFn/LogRetention/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TriggerFnLogRetention419A92EB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:168:23)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:96:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/IngestionStateMachine/Role/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionStateMachineRoleDefaultPolicyB2B97E2E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new StateMachine2 in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:155:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagIngestion-dev/TriggerFn/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TriggerFnServiceRoleDefaultPolicy887AE57C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantStartExecution in aws-cdk-lib...",
+        "new IngestionStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/ingestion-stack.ts:183:18)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:73:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

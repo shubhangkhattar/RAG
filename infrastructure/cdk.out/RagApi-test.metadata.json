@@ -1,0 +1,624 @@
+{
+  "/RagApi-test": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "true"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "test"
+        }
+      ]
+    }
+  ],
+  "/RagApi-test/ApiService": [
+    {
+      "type": "aws:cdk:warning",
+      "data": "Enable the 'circuitBreaker' property to trigger a quicker deployment failure if tasks are failing to come start (without this setting deployments may take up to 3 hours to fail). [ack: @aws-cdk/aws-ecs:shouldUseCircuitBreaker]",
+      "trace": [
+        "Annotations.addMessage (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/core/lib/annotations.js:1:2399)",
+        "Annotations.addWarningV2 (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1087)",
+        "new BaseService2 (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ecs/lib/base/base-service.js:1:13563)",
+        "new BaseService2 (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/core/lib/no-box-stack-traces.js:1:345)",
+        "new FargateService2 (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ecs/lib/fargate/fargate-service.js:1:6805)",
+        "new FargateService2 (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/core/lib/prop-injectable.js:1:855)",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:228:21)",
+        "Object.<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "Module._compile (node:internal/modules/cjs/loader:1760:14)",
+        "Module.m._compile (/Users/shubhangkhattar/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1618:23)",
+        "Module._extensions..js (node:internal/modules/cjs/loader:1892:10)",
+        "Object.require.extensions.<computed> [as .ts] (/Users/shubhangkhattar/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1621:12)",
+        "Module.load (node:internal/modules/cjs/loader:1480:32)",
+        "Module._load (node:internal/modules/cjs/loader:1299:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:328:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:245:24)",
+        "Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)",
+        "phase4 (/Users/shubhangkhattar/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:649:14)",
+        "bootstrap (/Users/shubhangkhattar/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:95:10)",
+        "main (/Users/shubhangkhattar/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:55:10)",
+        "Object.<anonymous> (/Users/shubhangkhattar/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:800:3)",
+        "Module._compile (node:internal/modules/cjs/loader:1760:14)",
+        "Object.Module._extensions..js (node:internal/modules/cjs/loader:1892:10)",
+        "Module.load (node:internal/modules/cjs/loader:1480:32)",
+        "Module._load (node:internal/modules/cjs/loader:1299:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:328:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:245:24)",
+        "Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)",
+        "node:internal/main/run_main_module:33:47"
+      ]
+    }
+  ],
+  "/RagApi-test/ApiEndpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiEndpoint"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:327:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/UserPoolId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:331:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/UserPoolClientId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolClientId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:335:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/EcrRepoUri": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcrRepoUri"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:339:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/CognitoDomain": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CognitoDomain"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:343:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagUserPool/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagUserPoolCC9E0B99"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPool2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:41:22)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/UserPoolClient/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolClient2F5918F7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPoolClient2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:69:28)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiRepo/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiRepoEFA7BA97"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Repository2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:84:21)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagCluster/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagCluster4ADD1CF7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Cluster2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:98:21)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiTaskRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiTaskRole12FAD4A7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:105:22)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiExecutionRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiExecutionRole6C67842D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:139:27)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiLogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiLogGroup1DEDFC07"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new LogGroup2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:149:22)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiTaskDef/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiTaskDef37DBDBD0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new FargateTaskDefinition2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:156:21)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/AlbSg/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AlbSg1155C1BE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new SecurityGroup2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:192:19)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/AlbSg/to RagApitestApiServiceSg9C646866:8000": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AlbSgtoRagApitestApiServiceSg9C64686680009ACF7D1D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:247:38)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiServiceSg/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiServiceSg857FEC5F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new SecurityGroup2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:203:23)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiServiceSg/from RagApitestAlbSg1AD0D79F:8000": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiServiceSgfromRagApitestAlbSg1AD0D79F8000CB2B859A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:208:15)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiAlb/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiAlbDD21E9E1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancer2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:211:17)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiService/Service": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiServiceC9037CF0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new FargateService2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:228:21)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/VpcLink/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcLink42ED6FF0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new VpcLink2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:282:21)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagHttpApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagHttpApi10ABC037"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new HttpApi2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:294:21)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagUserPool/UserPoolDomain/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagUserPoolUserPoolDomain8EDBEF11"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addDomain in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:65:14)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiTaskRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiTaskRoleDefaultPolicyBEF5D530"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantReadWriteData in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:109:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiExecutionRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiExecutionRoleDefaultPolicyCA8C38F6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantDecrypt in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:146:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiAlb/HttpListener/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiAlbHttpListenerA8172EA3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:221:30)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagHttpApi/DefaultStage/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagHttpApiDefaultStage1D5633CC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new HttpApi2 in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:294:21)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagHttpApi/ANY--v1--{proxy+}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagHttpApiANYv1proxy87B74A99"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:310:13)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagHttpApi/CognitoAuthorizer/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagHttpApiCognitoAuthorizer9D48F2BD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:310:13)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagHttpApi/GET--health/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagHttpApiGEThealth147450DB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:318:13)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiAlb/HttpListener/ApiTargetsGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiAlbHttpListenerApiTargetsGroup66E3770D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:247:38)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiService/TaskCount/Target/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiServiceTaskCountTargetBFC64025"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.autoScaleTaskCount in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:262:29)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/RagHttpApi/ANY--v1--{proxy+}/AlbIntegration/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagHttpApiANYv1proxyAlbIntegration81F8237C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:310:13)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiService/TaskCount/Target/CpuScaling/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiServiceTaskCountTargetCpuScaling9EAFB075"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...ScalableTaskCount.scaleOnCpuUtilization in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:263:13)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagApi-test/ApiService/TaskCount/Target/RequestScaling/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiServiceTaskCountTargetRequestScalingE1EB6982"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...ScalableTaskCount.scaleOnRequestCount in aws-cdk-lib...",
+        "new ApiStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/api-stack.ts:268:13)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:86:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

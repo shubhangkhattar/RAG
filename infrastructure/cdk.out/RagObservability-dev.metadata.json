@@ -1,0 +1,208 @@
+{
+  "/RagObservability-dev": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "false"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "dev"
+        }
+      ]
+    }
+  ],
+  "/RagObservability-dev/AlarmTopicArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AlarmTopicArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:258:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/AlarmTopic/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AlarmTopicD01E77F9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Topic2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:18:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/EcsCpuAlarm/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcsCpuAlarm1D439C07"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Alarm2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:77:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/EcsMemAlarm/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcsMemAlarmDBB2D5F3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Alarm2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:89:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/OpenSearchRedAlarm/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OpenSearchRedAlarmD27C4F19"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Alarm2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:100:24)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/OpenSearchYellowAlarm/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OpenSearchYellowAlarmBE852902"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Alarm2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:111:27)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/OpenSearchDiskAlarm/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OpenSearchDiskAlarmE863A9F1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Alarm2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:122:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/IngestionErrorAlarm/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IngestionErrorAlarm93313BAA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Alarm2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:134:30)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/RagDashboard/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagDashboard19822E31"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Dashboard2 in aws-cdk-lib...",
+        "new ObservabilityStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/observability-stack.ts:153:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:113:3)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagObservability-dev/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

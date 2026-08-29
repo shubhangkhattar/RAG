@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "f6fc261a5114a2849b98a7feac2e817652152188a54ea968577753dfb4dc61e0": {
+      "displayName": "RagObservability-dev Template",
+      "source": {
+        "path": "RagObservability-dev.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "774200944025-us-east-1-ade7641d": {
+          "bucketName": "cdk-hnb659fds-assets-774200944025-us-east-1",
+          "objectKey": "f6fc261a5114a2849b98a7feac2e817652152188a54ea968577753dfb4dc61e0.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::774200944025:role/cdk-hnb659fds-file-publishing-role-774200944025-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

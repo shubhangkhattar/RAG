@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "76e4cf81cec460610d0a648d5fc0e7ba40a7b9899b1bc1d6f9af46dbb32dacf2": {
+      "displayName": "RagFrontend-dev Template",
+      "source": {
+        "path": "RagFrontend-dev.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "774200944025-us-east-1-3bf0c26e": {
+          "bucketName": "cdk-hnb659fds-assets-774200944025-us-east-1",
+          "objectKey": "76e4cf81cec460610d0a648d5fc0e7ba40a7b9899b1bc1d6f9af46dbb32dacf2.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::774200944025:role/cdk-hnb659fds-file-publishing-role-774200944025-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

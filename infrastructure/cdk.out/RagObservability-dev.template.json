@@ -1,0 +1,398 @@
+{
+ "Resources": {
+  "AlarmTopicD01E77F9": {
+   "Type": "AWS::SNS::Topic",
+   "Properties": {
+    "DisplayName": "RAG System Alarms - dev",
+    "TopicName": "rag-alarms-dev"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/AlarmTopic/Resource"
+   }
+  },
+  "EcsCpuAlarm1D439C07": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmActions": [
+     {
+      "Ref": "AlarmTopicD01E77F9"
+     }
+    ],
+    "AlarmDescription": "ECS task CPU above 80% - consider scaling",
+    "AlarmName": "rag-ecs-cpu-high-dev",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "ClusterName",
+      "Value": "rag-cluster-dev"
+     },
+     {
+      "Name": "ServiceName",
+      "Value": "rag-api-dev"
+     }
+    ],
+    "EvaluationPeriods": 3,
+    "MetricName": "CPUUtilization",
+    "Namespace": "AWS/ECS",
+    "OKActions": [
+     {
+      "Ref": "AlarmTopicD01E77F9"
+     }
+    ],
+    "Period": 60,
+    "Statistic": "Average",
+    "Threshold": 80,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/EcsCpuAlarm/Resource"
+   }
+  },
+  "EcsMemAlarmDBB2D5F3": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmActions": [
+     {
+      "Ref": "AlarmTopicD01E77F9"
+     }
+    ],
+    "AlarmDescription": "ECS task memory above 85%",
+    "AlarmName": "rag-ecs-memory-high-dev",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "ClusterName",
+      "Value": "rag-cluster-dev"
+     },
+     {
+      "Name": "ServiceName",
+      "Value": "rag-api-dev"
+     }
+    ],
+    "EvaluationPeriods": 3,
+    "MetricName": "MemoryUtilization",
+    "Namespace": "AWS/ECS",
+    "Period": 60,
+    "Statistic": "Average",
+    "Threshold": 85,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/EcsMemAlarm/Resource"
+   }
+  },
+  "OpenSearchRedAlarmD27C4F19": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmActions": [
+     {
+      "Ref": "AlarmTopicD01E77F9"
+     }
+    ],
+    "AlarmDescription": "OpenSearch cluster status is RED - data loss risk",
+    "AlarmName": "rag-opensearch-red-dev",
+    "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+    "Dimensions": [
+     {
+      "Name": "ClientId",
+      "Value": "774200944025"
+     },
+     {
+      "Name": "DomainName",
+      "Value": "rag-search-dev"
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "ClusterStatus.red",
+    "Namespace": "AWS/ES",
+    "Period": 60,
+    "Statistic": "Maximum",
+    "Threshold": 1,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/OpenSearchRedAlarm/Resource"
+   }
+  },
+  "OpenSearchYellowAlarmBE852902": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmActions": [
+     {
+      "Ref": "AlarmTopicD01E77F9"
+     }
+    ],
+    "AlarmDescription": "OpenSearch cluster status is YELLOW - replica shards unassigned",
+    "AlarmName": "rag-opensearch-yellow-dev",
+    "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+    "Dimensions": [
+     {
+      "Name": "ClientId",
+      "Value": "774200944025"
+     },
+     {
+      "Name": "DomainName",
+      "Value": "rag-search-dev"
+     }
+    ],
+    "EvaluationPeriods": 3,
+    "MetricName": "ClusterStatus.yellow",
+    "Namespace": "AWS/ES",
+    "Period": 60,
+    "Statistic": "Maximum",
+    "Threshold": 1,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/OpenSearchYellowAlarm/Resource"
+   }
+  },
+  "OpenSearchDiskAlarmE863A9F1": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmActions": [
+     {
+      "Ref": "AlarmTopicD01E77F9"
+     }
+    ],
+    "AlarmDescription": "OpenSearch free storage below 20% - index writes may stop",
+    "AlarmName": "rag-opensearch-disk-dev",
+    "ComparisonOperator": "LessThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "ClientId",
+      "Value": "774200944025"
+     },
+     {
+      "Name": "DomainName",
+      "Value": "rag-search-dev"
+     }
+    ],
+    "EvaluationPeriods": 2,
+    "MetricName": "FreeStorageSpace",
+    "Namespace": "AWS/ES",
+    "Period": 60,
+    "Statistic": "Minimum",
+    "Threshold": 4096,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/OpenSearchDiskAlarm/Resource"
+   }
+  },
+  "IngestionErrorAlarm93313BAA": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmActions": [
+     {
+      "Ref": "AlarmTopicD01E77F9"
+     }
+    ],
+    "AlarmDescription": "Ingestion Lambda errors - documents may not be indexed",
+    "AlarmName": "rag-ingestion-errors-dev",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "EvaluationPeriods": 2,
+    "Metrics": [
+     {
+      "Expression": "processorErrors + embedderErrors",
+      "Id": "expr_1",
+      "ReturnData": true
+     },
+     {
+      "Id": "processorErrors",
+      "MetricStat": {
+       "Metric": {
+        "Dimensions": [
+         {
+          "Name": "FunctionName",
+          "Value": "rag-processor-dev"
+         }
+        ],
+        "MetricName": "Errors",
+        "Namespace": "AWS/Lambda"
+       },
+       "Period": 300,
+       "Stat": "Sum"
+      },
+      "ReturnData": false
+     },
+     {
+      "Id": "embedderErrors",
+      "MetricStat": {
+       "Metric": {
+        "Dimensions": [
+         {
+          "Name": "FunctionName",
+          "Value": "rag-embedder-dev"
+         }
+        ],
+        "MetricName": "Errors",
+        "Namespace": "AWS/Lambda"
+       },
+       "Period": 300,
+       "Stat": "Sum"
+      },
+      "ReturnData": false
+     }
+    ],
+    "Threshold": 3,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/IngestionErrorAlarm/Resource"
+   }
+  },
+  "RagDashboard19822E31": {
+   "Type": "AWS::CloudWatch::Dashboard",
+   "Properties": {
+    "DashboardBody": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"widgets\":[{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":0,\"properties\":{\"view\":\"timeSeries\",\"title\":\"ECS - CPU & Memory Utilization\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/ECS\",\"CPUUtilization\",\"ClusterName\",\"rag-cluster-dev\",\"ServiceName\",\"rag-api-dev\",{\"period\":60}],[\"AWS/ECS\",\"MemoryUtilization\",\"ClusterName\",\"rag-cluster-dev\",\"ServiceName\",\"rag-api-dev\",{\"period\":60}]],\"annotations\":{\"horizontal\":[{\"value\":80,\"label\":\"CPU threshold\",\"color\":\"#ff6961\",\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":12,\"y\":0,\"properties\":{\"view\":\"timeSeries\",\"title\":\"ECS - Running Task Count\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/ECS\",\"RunningTaskCount\",\"ClusterName\",\"rag-cluster-dev\",\"ServiceName\",\"rag-api-dev\",{\"period\":60,\"stat\":\"Maximum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":8,\"height\":6,\"x\":0,\"y\":6,\"properties\":{\"view\":\"timeSeries\",\"title\":\"OpenSearch - Search Latency (ms)\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/ES\",\"SearchLatency\",\"ClientId\",\"774200944025\",\"DomainName\",\"rag-search-dev\",{\"period\":60,\"stat\":\"p50\"}],[\"AWS/ES\",\"SearchLatency\",\"ClientId\",\"774200944025\",\"DomainName\",\"rag-search-dev\",{\"period\":60,\"stat\":\"p99\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":8,\"height\":6,\"x\":8,\"y\":6,\"properties\":{\"view\":\"timeSeries\",\"title\":\"OpenSearch - Indexing Rate\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/ES\",\"IndexingRate\",\"ClientId\",\"774200944025\",\"DomainName\",\"rag-search-dev\",{\"period\":60}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":8,\"height\":6,\"x\":16,\"y\":6,\"properties\":{\"view\":\"timeSeries\",\"title\":\"OpenSearch - Free Storage (MB)\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/ES\",\"FreeStorageSpace\",\"ClientId\",\"774200944025\",\"DomainName\",\"rag-search-dev\",{\"period\":60,\"stat\":\"Minimum\"}]],\"annotations\":{\"horizontal\":[{\"value\":4096,\"label\":\"Low disk threshold\",\"color\":\"#ff6961\",\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":12,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Redis - Cache Hits vs Misses\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/ElastiCache\",\"CacheHits\",\"ReplicationGroupId\",\"rag-cache-dev\",{\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ElastiCache\",\"CacheMisses\",\"ReplicationGroupId\",\"rag-cache-dev\",{\"period\":60,\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":12,\"y\":12,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Redis - Connections & Memory\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/ElastiCache\",\"CurrConnections\",\"ReplicationGroupId\",\"rag-cache-dev\",{\"period\":60,\"stat\":\"Maximum\"}],[\"AWS/ElastiCache\",\"BytesUsedForCache\",\"ReplicationGroupId\",\"rag-cache-dev\",{\"period\":60,\"stat\":\"Maximum\",\"yAxis\":\"right\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":8,\"height\":6,\"x\":0,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Ingestion Lambdas - Invocations\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"rag-processor-dev\",{\"stat\":\"Sum\"}],[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"rag-embedder-dev\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":8,\"height\":6,\"x\":8,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Ingestion Lambdas - Errors\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"rag-processor-dev\",{\"stat\":\"Sum\"}],[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"rag-embedder-dev\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":8,\"height\":6,\"x\":16,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Ingestion Lambdas - Duration (ms)\",\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"rag-processor-dev\",{\"stat\":\"p99\"}],[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"rag-embedder-dev\",{\"stat\":\"p99\"}]],\"yAxis\":{}}},{\"type\":\"alarm\",\"width\":24,\"height\":3,\"x\":0,\"y\":24,\"properties\":{\"title\":\"Active Alarms\",\"alarms\":[\"",
+       {
+        "Fn::GetAtt": [
+         "EcsCpuAlarm1D439C07",
+         "Arn"
+        ]
+       },
+       "\",\"",
+       {
+        "Fn::GetAtt": [
+         "EcsMemAlarmDBB2D5F3",
+         "Arn"
+        ]
+       },
+       "\",\"",
+       {
+        "Fn::GetAtt": [
+         "OpenSearchRedAlarmD27C4F19",
+         "Arn"
+        ]
+       },
+       "\",\"",
+       {
+        "Fn::GetAtt": [
+         "OpenSearchYellowAlarmBE852902",
+         "Arn"
+        ]
+       },
+       "\",\"",
+       {
+        "Fn::GetAtt": [
+         "OpenSearchDiskAlarmE863A9F1",
+         "Arn"
+        ]
+       },
+       "\",\"",
+       {
+        "Fn::GetAtt": [
+         "IngestionErrorAlarm93313BAA",
+         "Arn"
+        ]
+       },
+       "\"]}}]}"
+      ]
+     ]
+    },
+    "DashboardName": "rag-system-dev"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/RagDashboard/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/z2NwQ7CIBBEv8U7rAbtBxi9m6h3s11qSkuhYcEeCP9usYmnefPmMApUc4LDDheWpEdpTQv5EZFGsapXZseQn342JC5v94MiyPqkF4zUQz5bDFPdNrgi963HoKv6l1JqvaU4p1iE87qDgfcf1cBx/R7YGBmSi2bq4L7lF92k1C+YAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagObservability-dev/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "AlarmTopicArn": {
+   "Value": {
+    "Ref": "AlarmTopicD01E77F9"
+   },
+   "Export": {
+    "Name": "rag-alarm-topic-arn-dev"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

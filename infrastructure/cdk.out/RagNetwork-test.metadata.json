@@ -1,0 +1,679 @@
+{
+  "/RagNetwork-test": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "true"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "test"
+        }
+      ]
+    }
+  ],
+  "/RagNetwork-test/VpcId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:112:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcF255D156"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcIGW99FB4ADC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcVPCGWC32343EC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/VpcFlowLogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcFlowLogGroup86559C69"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new LogGroup2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:98:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/VpcFlowLog/FlowLog": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcFlowLogF72230C7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new FlowLog2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:103:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/Exports/Output{\"Ref\":\"RagVpcF255D156\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefRagVpcF255D156A9DBD65D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/Exports/Output{\"Ref\":\"RagVpcisolatedSubnet1Subnet61457814\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefRagVpcisolatedSubnet1Subnet61457814A97D6AFE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/Exports/Output{\"Ref\":\"RagVpcprivateSubnet1Subnet01559DA9\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefRagVpcprivateSubnet1Subnet01559DA95537357C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/Exports/Output{\"Ref\":\"RagVpcprivateSubnet2Subnet34F37733\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefRagVpcprivateSubnet2Subnet34F37733460A9BF6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet1SubnetFCBD8E3C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet1RouteTable8B413332"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet1RouteTableAssociation225AEC56"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet1DefaultRoute4729675D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet1EIPC60579A0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet1NATGateway7982108B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet2Subnet0657F9AA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet2RouteTableB0B7202A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet2RouteTableAssociationF26482F2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/publicSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcpublicSubnet2DefaultRoute8F3D3507"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet1Subnet01559DA9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet1RouteTable18E1424D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet1RouteTableAssociation2438DC79"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet1DefaultRoute2D711B5D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet2Subnet34F37733"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet2RouteTable65DEDBBD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet2RouteTableAssociationD56DBB7F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/privateSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcprivateSubnet2DefaultRoute335CD199"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/isolatedSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcisolatedSubnet1Subnet61457814"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/isolatedSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcisolatedSubnet1RouteTableFAAA4EA9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/isolatedSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcisolatedSubnet1RouteTableAssociation030BEC46"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/isolatedSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcisolatedSubnet2Subnet78EB2939"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/isolatedSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcisolatedSubnet2RouteTable6170D54A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/isolatedSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcisolatedSubnet2RouteTableAssociation305AC3B0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/shubhangkhattar/SourceCode/RAG/infrastructure/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:29:16)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/S3Endpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcS3Endpoint4604A5D7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addGatewayEndpoint in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:54:14)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/RagVpc/DynamoDBEndpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagVpcDynamoDBEndpointCCAF9C84"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addGatewayEndpoint in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:57:14)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/VpcFlowLog/IAMRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcFlowLogIAMRoleB4DCB624"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new FlowLog2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:103:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagNetwork-test/VpcFlowLog/IAMRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcFlowLogIAMRoleDefaultPolicy7533133B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new FlowLog2 in aws-cdk-lib...",
+        "new NetworkStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/network-stack.ts:103:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:36:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

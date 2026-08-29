@@ -1,0 +1,188 @@
+{
+  "/RagCache-test": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:62:15)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ephemeral",
+          "value": "true"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "cdk"
+        },
+        {
+          "key": "Project",
+          "value": "enterprise-rag"
+        },
+        {
+          "key": "Stage",
+          "value": "test"
+        }
+      ]
+    }
+  ],
+  "/RagCache-test/CacheSubnetGroup": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CacheSubnetGroup"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new CacheStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/cache-stack.ts:36:25)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:62:15)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/CacheParamGroup": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CacheParamGroup"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "CacheStack.createParamGroup (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/cache-stack.ts:81:16)",
+        "new CacheStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/cache-stack.ts:63:37)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:62:15)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/RagCache": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RagCache"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new CacheStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/cache-stack.ts:44:29)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:62:15)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/CacheEndpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CacheEndpoint"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new CacheStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/cache-stack.ts:70:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:62:15)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/CachePort": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CachePort"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new CacheStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/cache-stack.ts:74:5)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:62:15)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/CacheSg/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CacheSg89F87252"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new SecurityGroup2 in aws-cdk-lib...",
+        "new CacheStack (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/lib/stacks/cache-stack.ts:24:26)",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:62:15)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/Exports/Output{\"Fn::GetAtt\":[\"RagCache\",\"PrimaryEndPoint.Address\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttRagCachePrimaryEndPointAddressD0CDC6D0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RagCache-test/Exports/Output{\"Fn::GetAtt\":[\"RagCache\",\"PrimaryEndPoint.Port\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttRagCachePrimaryEndPointPort738DA134"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/shubhangkhattar/SourceCode/RAG/infrastructure/bin/app.ts:133:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

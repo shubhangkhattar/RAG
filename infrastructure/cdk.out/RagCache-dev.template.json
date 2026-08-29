@@ -1,0 +1,189 @@
+{
+ "Resources": {
+  "CacheSg89F87252": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "ElastiCache Redis - allow from within VPC only",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "10.10.0.0/16",
+      "Description": "Redis from VPC CIDR",
+      "FromPort": 6379,
+      "IpProtocol": "tcp",
+      "ToPort": 6379
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcF255D156A9DBD65D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagCache-dev/CacheSg/Resource"
+   }
+  },
+  "CacheSubnetGroup": {
+   "Type": "AWS::ElastiCache::SubnetGroup",
+   "Properties": {
+    "CacheSubnetGroupName": "rag-cache-subnets-dev",
+    "Description": "RAG Redis subnet group - dev",
+    "SubnetIds": [
+     {
+      "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet1Subnet01559DA95537357C"
+     },
+     {
+      "Fn::ImportValue": "RagNetwork-dev:ExportsOutputRefRagVpcprivateSubnet2Subnet34F37733460A9BF6"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagCache-dev/CacheSubnetGroup"
+   }
+  },
+  "CacheParamGroup": {
+   "Type": "AWS::ElastiCache::ParameterGroup",
+   "Properties": {
+    "CacheParameterGroupFamily": "redis7",
+    "Description": "RAG Redis params - dev",
+    "Properties": {
+     "maxmemory-policy": "allkeys-lru",
+     "activedefrag": "yes"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagCache-dev/CacheParamGroup"
+   }
+  },
+  "RagCache": {
+   "Type": "AWS::ElastiCache::ReplicationGroup",
+   "Properties": {
+    "AtRestEncryptionEnabled": true,
+    "AutomaticFailoverEnabled": false,
+    "CacheNodeType": "cache.t3.micro",
+    "CacheParameterGroupName": {
+     "Ref": "CacheParamGroup"
+    },
+    "CacheSubnetGroupName": "rag-cache-subnets-dev",
+    "Engine": "redis",
+    "EngineVersion": "7.1",
+    "MultiAZEnabled": false,
+    "NumCacheClusters": 1,
+    "ReplicationGroupDescription": "RAG semantic + response cache - dev",
+    "ReplicationGroupId": "rag-cache-dev",
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "CacheSg89F87252",
+       "GroupId"
+      ]
+     }
+    ],
+    "SnapshotRetentionLimit": 1,
+    "TransitEncryptionEnabled": true
+   },
+   "DependsOn": [
+    "CacheSubnetGroup"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RagCache-dev/RagCache"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOQQrCMBREz+I+/Uq0J3DhUqkHkDT94m/TJCQ/ioTc3ZRCwdUwb4ZhJMj2BIed+sRGD1NjqId8Z6UnUdEjo5bVo06B+HsJLnlxfto/UAQaFZm00i+EvMSpt8hb+6aCmpExbKRDb2qfydl1oiz0mtgnLsK6AWGM+7ds4Vi/jZGoCckyzQjdqj+67fABuAAAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "RagCache-dev/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "CacheEndpoint": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagCache",
+     "PrimaryEndPoint.Address"
+    ]
+   },
+   "Export": {
+    "Name": "rag-cache-endpoint-dev"
+   }
+  },
+  "CachePort": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagCache",
+     "PrimaryEndPoint.Port"
+    ]
+   },
+   "Export": {
+    "Name": "rag-cache-port-dev"
+   }
+  },
+  "ExportsOutputFnGetAttRagCachePrimaryEndPointAddressD0CDC6D0": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagCache",
+     "PrimaryEndPoint.Address"
+    ]
+   },
+   "Export": {
+    "Name": "RagCache-dev:ExportsOutputFnGetAttRagCachePrimaryEndPointAddressD0CDC6D0"
+   }
+  },
+  "ExportsOutputFnGetAttRagCachePrimaryEndPointPort738DA134": {
+   "Value": {
+    "Fn::GetAtt": [
+     "RagCache",
+     "PrimaryEndPoint.Port"
+    ]
+   },
+   "Export": {
+    "Name": "RagCache-dev:ExportsOutputFnGetAttRagCachePrimaryEndPointPort738DA134"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
